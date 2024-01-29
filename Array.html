@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Assignment</title>
+</head>
+<body>
+<!--Edna Lynn Laxa ; Web Dev II ; Assignment: Array ; January 25-->
+
+    <h1>The City List</h1>
+    <!--Text Box , utilizing input type to grab user's entry-->
+    <input type = "text" id="NewCityAdded" placeholder ="Add city here">
+    <p>To enter city, click the desire button to add then click display list to queue list display</p>
+
+    <!-- Add a button  id="btnAddCityToBack"   and a text box  to enter a new city-->
+    <button id = "btnAddCityToBack">Enter city to end of the list</button> 
+    <button id = "btnDisplayCities">Display City List</button>
+    <button id ="btnAddCityToFront">Enter a new city to the front of the list</button>
+
+    <p id="cityDisplay"></p> <!--City display is located in the function Display Cities, this will prompt the array-->
+
+
+    <script> // to prompt javascript functions 
+        //1. create an array 'cities' with 5 U.S or World cities
+        const cities=["Seattle", "Los Angeles", "Houston", "Chicago", "Columbus"]; 
+
+        function addNewCityToBack() // When you want to add an element to the end of your array, use push() . 
+        //reference: https://www.freecodecamp.org/news/how-to-insert-an-element-into-an-array-in-javascript/
+        {
+            const addedCity = document.getElementById("NewCityAdded").value.trim(); 
+            if (addedCity) {
+                cities.push(addedCity); 
+                document.getElementById("NewCityAdded").value="";
+            }
+
+        }
+        function DisplayCities(){ // Creating a fuction to display array 
+            const cityDisplay = document.getElementById("cityDisplay"); // Focusing on element ID to display 
+             cityDisplay.textContent=""; // prompt textContent="" to clear previous entry 
+            for (const city of cities) { // using a for loop to access CITIES array which is organized above 
+               cityDisplay.textContent += city + ", "; // Prompting the text format. // City display = array access , it is coded w/in the for loop.  
+            }
+
+        }
+
+        function addNewCityToFront(){ // If you need to add an element to the beginning of your array, use unshift()
+            //reference: https://www.freecodecamp.org/news/how-to-insert-an-element-into-an-array-in-javascript/
+            const addedCity = document.getElementById("NewCityAdded").value.trim(); 
+            if(addedCity){
+                cities.unshift(addedCity); 
+                document.getElementById("NewCityAdded").value=""; //Clear entry section 
+            }
+        }
+
+        //Implementing event listeners to my made buttons - this will track users response by clicking. 
+        //Event listerners is a great function for interactive webpages. 
+        //action for button id & function titles
+        document.getElementById("btnAddCityToBack").addEventListener("click", addNewCityToBack); 
+        document.getElementById("btnDisplayCities").addEventListener("click", DisplayCities ); 
+        document.getElementById("btnAddCityToFront").addEventListener("click", addNewCityToFront); 
+
+    </script>
+    
+</body>
+</html>
+
+<!--New html document
+in the body add <script> tags
+
+1. create an array 'cities' with 5 U.S or World cities
+2. Add a button  id="btnAddCityToBack"   and a text box  to enter a new city
+    in the <script> section, define a function addNewCityToBack
+    this function gets the new city from the text box and adds it to the end of the array cities
+
+3. Add a button id="btnDisplayCities".  this button is to call a function display function, you need to add,  
+    that takes a parameter array
+    then sequences through the array (for loop) to display all the cities.
+
+4. add a third button id="btnAddCityToFront" . the onclick of this button should call a function addNewCityToFront, 
+which adds the city to the front of the array.-->
